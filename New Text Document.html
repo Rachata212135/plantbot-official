@@ -1,0 +1,281 @@
+<!-- PlantBot Official Landing Page (v1.2) -->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantBot - ระบบดูแลต้นไม้อัจฉริยะด้วย IoT</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #4ade80 0%, #10b981 100%);
+        }
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 1. Navigation (Header) -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-green-600 flex items-center">
+                <!-- [FIX v1.1] 1. เปลี่ยนเป็นรูปโลโก้ทรงกลม -->
+                <img id="logo-image" src="https://placehold.co/40x40/4ade80/ffffff?text=P" onerror="this.onerror=null; this.src='https://placehold.co/40x40/4ade80/ffffff?text=P';" alt="PlantBot Logo" class="w-8 h-8 rounded-full mr-2 shadow-inner">
+                PlantBot
+            </h1>
+            <nav class="hidden md:block">
+                <a href="#about" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md font-medium">เกี่ยวกับ</a>
+                <a href="#features" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md font-medium">คุณสมบัติ</a>
+                <a href="#tech" class="text-gray-600 hover:text-green-600 px-3 py-2 rounded-md font-medium">เทคโนโลยี</a>
+                <a href="#download" class="text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-full ml-4 font-medium transition duration-300">ดาวน์โหลด</a>
+            </nav>
+            <button id="menu-button" class="md:hidden text-gray-600 hover:text-green-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#about" class="block text-gray-600 hover:bg-green-50 hover:text-green-600 px-3 py-2 rounded-md font-medium">เกี่ยวกับ</a>
+            <a href="#features" class="block text-gray-600 hover:bg-green-50 hover:text-green-600 px-3 py-2 rounded-md font-medium">คุณสมบัติ</a>
+            <a href="#tech" class="block text-gray-600 hover:bg-green-50 hover:text-green-600 px-3 py-2 rounded-md font-medium">เทคโนโลยี</a>
+            <a href="#download" class="block text-white bg-green-600 hover:bg-green-700 px-3 py-2 rounded-md font-medium text-center mt-2">ดาวน์โหลด APK</a>
+        </div>
+    </div>
+
+    <!-- 2. Hero Section (ชื่อโครงการและคำโปรย) -->
+    <section class="gradient-bg text-white py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl sm:text-6xl font-extrabold leading-tight mb-4">
+                PlantBot: ผู้ช่วยดูแลต้นไม้ส่วนตัวของคุณ
+            </h2>
+            <p class="text-xl sm:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+                IoT Dashboard ที่ทำงานร่วมกับ PlantBoard เพื่อตรวจสอบ, บันทึกประวัติ, และควบคุมสภาพแวดล้อมของต้นไม้ในแบบ Real-time
+            </p>
+            <div class="space-x-4">
+                <a href="#download" class="bg-white text-green-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    ดาวน์โหลด (APK)
+                </a>
+                <a href="#tech" class="text-white hover:text-gray-100 font-medium py-3 px-8 rounded-full transition duration-300 border border-white border-opacity-50 hover:bg-white hover:bg-opacity-10">
+                    ดูสถาปัตยกรรม
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. About Section (รายละเอียดโครงการ) -->
+    <section id="about" class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-4">เกี่ยวกับโครงการ PlantBot</h3>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">
+                PlantBot คือการบูรณาการระหว่างซอฟต์แวร์และฮาร์ดแวร์ เพื่อสร้างระบบอัตโนมัติในการดูแลพืชพรรณ โดยมีเป้าหมายเพื่อเพิ่มประสิทธิภาพในการเพาะปลูกและลดความผิดพลาดจากปัจจัยมนุษย์
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-white rounded-xl shadow-lg feature-card text-center">
+                    <span class="text-4xl text-green-500 mb-4 inline-block">📱</span>
+                    <h4 class="text-xl font-semibold mb-2">Flutter App</h4>
+                    <p class="text-gray-500">ศูนย์ควบคุม Dashboard ที่เชื่อมต่อกับ Firebase และใช้ BLE สำหรับการตั้งค่าเริ่มต้น</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg feature-card text-center">
+                    <span class="text-4xl text-green-500 mb-4 inline-block">🤖</span>
+                    <h4 class="text-xl font-semibold mb-2">PlantBoard Hardware</h4>
+                    <!-- [FIX v1.2] 2. เปลี่ยนชื่อบอร์ด -->
+                    <p class="text-gray-500">บอร์ดประมวลผลประสิทธิภาพสูง ทำหน้าที่อ่านค่าเซนเซอร์ (แสง, ดิน, DHT22) และควบคุมอุปกรณ์</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg feature-card text-center">
+                    <span class="text-4xl text-green-500 mb-4 inline-block">☁️</span>
+                    <h4 class="text-xl font-semibold mb-2">Realtime Database</h4>
+                    <p class="text-gray-500">ใช้ Firebase RTDB สำหรับการรับส่งข้อมูล Live Data (5 วิ) และ History Log (2 นาที) แบบ Real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Features Section (คุณสมบัติหลัก) -->
+    <section id="features" class="py-16 sm:py-24 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">คุณสมบัติเด่นของ PlantBot</h3>
+            <div class="space-y-12">
+                
+                <!-- Feature 1: Real-time Monitoring -->
+                <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 md:p-10">
+                    <div class="md:w-1/2 md:pr-10">
+                        <h4 class="text-2xl font-bold text-green-600 mb-3">การตรวจสอบสถานะ Real-time (5 วิ)</h4>
+                        <p class="text-gray-600 mb-4">
+                            แอปพลิเคชัน Flutter จะแสดงค่าเซนเซอร์แบบสดๆ (Live Data) ทุก 5 วินาที พร้อมสถานะ Online/Offline ที่แม่นยำ (App-Side Check) และแสดงผลเป็นกราฟใน Dashboard เพื่อให้คุณเห็นภาพรวมสุขภาพของพืช
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 space-y-1">
+                            <li>อุณหภูมิและความชื้นอากาศ (DHT22)</li>
+                            <li>ความชื้นในดิน (Pin 7) และค่าแสง (Pin 4)</li>
+                            <li>ระบบตรวจจับสายหลุด/เซนเซอร์เสีย (แสดง `--`)</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <!-- [FIX v1.1] 3. เปลี่ยนรูป Placeholder ให้ดูเป็นมือถือ -->
+                        <img src="https://placehold.co/600x400/9adea4/333333?text=PlantBot+App+Dashboard" alt="Real-time Dashboard" class="rounded-lg shadow-xl w-full">
+                    </div>
+                </div>
+
+                <!-- Feature 2: Provisioning -->
+                <div class="flex flex-col md:flex-row-reverse items-center bg-white rounded-xl shadow-lg p-6 md:p-10">
+                    <div class="md:w-1/2 md:pl-10">
+                        <h4 class="text-2xl font-bold text-green-600 mb-3">ระบบตั้งค่า Wi-Fi ผ่าน Bluetooth (BLE)</h4>
+                        <p class="text-gray-600 mb-4">
+                            สำหรับการติดตั้งบอร์ดครั้งแรก คุณไม่จำเป็นต้องเขียนโค้ด! PlantBot App ใช้ Bluetooth Low Energy (BLE) เพื่อสแกนหา PlantBoard และส่งรหัสผ่าน Wi-Fi ไปยังบอร์ดโดยตรง จากนั้นบอร์ดจะบันทึกรหัสลง NVS (Non-Volatile Storage) และเชื่อมต่อ Firebase อัตโนมัติในครั้งต่อไป
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            *ใช้ Pin-to-Pin Provisioning (SSID, Password) และตัดการทำงาน BLE เมื่อเชื่อมต่อสำเร็จ
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <img src="https://placehold.co/600x400/93c5fd/333333?text=BLE+Provisioning+Screen" alt="BLE Provisioning Screen" class="rounded-lg shadow-xl w-full">
+                    </div>
+                </div>
+
+                <!-- Feature 3: History & Control -->
+                <div class="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-6 md:p-10">
+                    <div class="md:w-1/2 md:pr-10">
+                        <h4 class="text-2xl font-bold text-green-600 mb-3">ประวัติ Log ละเอียด และการควบคุม</h4>
+                        <p class="text-gray-600 mb-4">
+                            ระบบบันทึก Log History ทุก 2 นาที เพื่อให้คุณสามารถย้อนดูความเปลี่ยนแปลงของสภาพแวดล้อม รวมถึงมีหน้าควบคุมแบบ Manual/Auto สำหรับสั่งการอุปกรณ์ต่อพ่วง (เช่น ปั๊มน้ำ, พัดลม)
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            *Log History รองรับการแสดงผล 4 ค่าหลัก (Temp, Humidity, Soil, Light)
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 mt-6 md:mt-0">
+                        <img src="https://placehold.co/600x400/fcd34d/333333?text=History+and+Control+Tabs" alt="History and Control Tabs" class="rounded-lg shadow-xl w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Technology Stack (ส่วนเทคนิค) -->
+    <section id="tech" class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">เทคโนโลยีหลักใน PlantBot (v12.0)</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                
+                <!-- Stack 1: App -->
+                <div class="p-6 border border-gray-200 rounded-xl bg-white shadow hover:shadow-lg transition duration-300">
+                    <span class="text-5xl mb-4 inline-block">📱</span>
+                    <h4 class="text-xl font-semibold mb-2">Application</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>**Front-end:** Flutter (iOS/Android/Web)</li>
+                        <li>**State Management:** Provider / SharedPreferences</li>
+                        <li>**Bluetooth:** FlutterBlue (สำหรับ BLE Provisioning)</li>
+                        <li>**Chart:** fl_chart</li>
+                    </ul>
+                </div>
+                
+                <!-- Stack 2: Hardware -->
+                <div class="p-6 border border-gray-200 rounded-xl bg-white shadow hover:shadow-lg transition duration-300">
+                    <span class="text-5xl mb-4 inline-block">🤖</span>
+                    <h4 class="text-xl font-semibold mb-2">Hardware & Firmware</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <!-- [FIX v1.2] 2. เปลี่ยนชื่อบอร์ด -->
+                        <li>**Board:** PlantBoard (ESP32-S3-WROOM-1-R8N16)</li>
+                        <li>**IDE:** Arduino IDE</li>
+                        <li>**Sensors:** DHT22 (Temp/Humid), Soil Moisture (Pin 7)</li>
+                        <li>**BLE:** PlantBoard BLE Library</li>
+                    </ul>
+                </div>
+
+                <!-- Stack 3: Backend -->
+                <div class="p-6 border border-gray-200 rounded-xl bg-white shadow hover:shadow-lg transition duration-300">
+                    <span class="text-5xl mb-4 inline-block">☁️</span>
+                    <h4 class="text-xl font-semibold mb-2">Backend & Database</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>**Database:** Firebase Realtime Database (RTDB)</li>
+                        <li>**Auth (App):** Firebase Anonymous Auth</li>
+                        <li>**Auth (Board):** Firebase Email/Password Auth</li>
+                        <li>**IoT Library:** Mobizt Firebase Client</li>
+                    </ul>
+                </div>
+
+                 <!-- Stack 4: Languages & Protocol -->
+                <div class="p-6 border border-gray-200 rounded-xl bg-white shadow hover:shadow-lg transition duration-300">
+                    <span class="text-5xl mb-4 inline-block">💻</span>
+                    <h4 class="text-xl font-semibold mb-2">Languages & Protocols</h4>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>**App Language:** Dart</li>
+                        <li>**Board Language:** C++ (Arduino)</li>
+                        <li>**Protocol:** Wi-Fi, Bluetooth Low Energy (BLE)</li>
+                        <li>**Storage:** NVS (On-Board Persistence)</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="mt-12 text-center">
+                <p class="text-gray-500 text-sm">PlantBot ถูกพัฒนาตามหลักการ Mobile-first design และเน้นการทำงานแบบ Low Power สำหรับ IoT</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Download CTA -->
+    <section id="download" class="py-16 sm:py-24 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-3xl font-bold mb-4">พร้อมเริ่มต้นดูแลต้นไม้ของคุณหรือยัง?</h3>
+            <p class="text-xl opacity-90 mb-8">ดาวน์โหลดแอปพลิเคชัน PlantBot สำหรับ Android เพื่อเชื่อมต่อกับ PlantBoard ของคุณได้ทันที</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://your-apk-link.com/PlantBot_v12.1.apk" class="bg-white text-green-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105" target="_blank" download>
+                    <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    ดาวน์โหลด PlantBot (APK)
+                </a>
+            </div>
+            <p class="mt-6 text-sm opacity-70">เวอร์ชันแอป: 12.1 | อัปเดตล่าสุด: 2025-01-08</p>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm mb-4">PlantBot Project | Developed by [ชื่อทีมของคุณ] | Capstone Project [Image of a graduating cap].</p>
+            <div class="space-x-4 text-xs">
+                <a href="#" class="hover:text-green-400 transition duration-300">นโยบายความเป็นส่วนตัว</a>
+                <span class="text-gray-600">|</span>
+                <a href="#" class="hover:text-green-400 transition duration-300">ติดต่อสอบถาม</a>
+                <span class="text-gray-600">|</span>
+                <!-- ลิงก์ไปยัง Github/Codebase -->
+                <a href="https://github.com/your-repo/plantbot" class="hover:text-green-400 transition duration-300" target="_blank">GitHub Codebase</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.getElementById('menu-button').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+        
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
